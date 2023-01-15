@@ -11,7 +11,7 @@ User.create!(
   surname: "Плотников",
   role: :manager,
   phone: "89161343606",
-  email: "ivan@plotnik.off",
+  # email: "ivan@plotnik.off",
   password: "admin"
 )
 
@@ -20,6 +20,6 @@ User.create!(
   surname: "Семенов",
   role: :executor,
   phone: "89633854682",
-  email: "alex@semen.off",
+  # email: "alex@semen.off",
   password: "alex"
 )

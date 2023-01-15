@@ -8,9 +8,9 @@
               url: user_registration_path(resource_name),
               html: { method: :put }, builder: CustomFormBuilder) do |f|
         .field.mb-1
-          = f.label :email
+          = f.label :phone
           br
-          = f.email_field :email, autofocus: true, autocomplete: "email"
+          = f.phone_field :phone, autofocus: true, autocomplete: "phone"
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           div
             | Currently waiting confirmation for:
