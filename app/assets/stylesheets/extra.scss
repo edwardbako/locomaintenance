@@ -24,10 +24,10 @@ body {
   z-index: 10000;
   opacity: 100%;
 
-  &.hidden {
-    visibility: hidden;
-    opacity: 30%;
-    transition: visibility 5s, opacity 10s;
+  // &.hidden {
+  //   visibility: hidden;
+  //   opacity: 30%;
+  //   transition: visibility 5s, opacity 10s;
 
-  }
+  // }
 }
