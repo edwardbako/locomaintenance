@@ -6,20 +6,33 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-User.create!(
-  name: "Иван",
-  surname: "Плотников",
-  role: :manager,
-  phone: "89161343606",
-  # email: "ivan@plotnik.off",
-  password: "admin"
+if User.count == 0 
+  User.create(
+    [
+      {
+        name: "Иван",
+        surname: "Плотников",
+        role: :manager,
+        phone: "89161343606",
+        password: "admin"
+      },
+      {
+        name: "Александр",
+        surname: "Семенов",
+        role: :executor,
+        phone: "89633854682",
+        password: "alex"
+      }
+    ]
+  )
+end
+
+Locomotive.find_or_create_by!(
+  model: "ТЭМ",
+  wheel_pairs: 6
 )
 
-User.create!(
-  name: "Александр",
-  surname: "Семенов",
-  role: :executor,
-  phone: "89633854682",
-  # email: "alex@semen.off",
-  password: "alex"
+Locomotive.find_or_create_by!(
+  model: "ЧМЭЗ",
+  wheel_pairs: 6
 )

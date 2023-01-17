@@ -1,0 +1,82 @@
+= form_with(model: @order, builder: CustomFormBuilder) do |form|
+  .form-floating.mb-2
+    = form.text_field :city, placeholder: :city
+    = form.label :city
+
+  .form-floating.mb-2
+    = form.select :locomotive_id, Locomotive.all.collect { |l| [l.model, l.id] }
+    = form.label :locomotive_id
+
+  .form-floating.mb-2
+    = form.number_field :wheel_pairs, placeholder: :wheel_pairs
+    = form.label :wheel_pairs
+
+  
+  .form-group 
+    .row
+      .col
+        .form-floating.mb-2
+          = form.number_field :budget, placeholder: :budget
+          = form.label :budget
+
+      .col
+        .form-floating.mb-2
+          = form.number_field :diem, placeholder: :diem
+          = form.label :diem
+
+      .col 
+        .form-floating.mb-2
+          = form.number_field :rental_housing, placeholder: :rental_housing
+          = form.label :rental_housing
+  
+  .form-floating.mb-2
+    = form.text_field :housing, placeholder: :housing
+    = form.label :housing
+
+  .input-group.mb-2
+    span.input-group-text Резцы
+    .form-floating
+      = form.number_field :tangen, placeholder: :tangen
+      = form.label :tangen
+    .form-floating
+      = form.number_field :cup, placeholder: :cup
+      = form.label :cup
+
+
+  .card.mb-2.text-bg-light
+    .card-body
+      = form.fields_for :contact_person do |person_form|
+        .input-group.mb-2
+          span.input-group-text контактное лицо
+          .form-floating
+            = person_form.phone_field :phone, placeholder: :phone
+            = person_form.label :phone
+
+        .input-group
+          .form-floating
+            = person_form.text_field :surname, placeholder: :surname
+            = person_form.label :surname
+
+          .form-floating
+            = person_form.text_field :name, placeholder: :name
+            = person_form.label :name
+
+          .form-floating
+            = person_form.text_field :patronymic, placeholder: :patronymic
+            = person_form.label :patronymic
+    
+  .row.mb-2
+    .col
+      .form-floating.mb-2
+        = form.date_field :start_date
+        = form.label :start_date
+
+    .col
+      .form-floating.mb-2
+        = form.select :executor_id,
+          User.executor.collect { |e| ["#{e.name} #{e.surname}", e.id]},
+          include_blank: true
+        = form.label :executor_id
+
+  .mb-2
+    = form.submit class: "btn btn-primary"

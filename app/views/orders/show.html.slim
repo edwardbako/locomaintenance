@@ -1,0 +1,86 @@
+.container 
+  .row
+    .col-4
+      h3 Заказ №#{@order.id}
+
+      .card 
+        .card-body
+          dl.row.mb-0
+            dt.col-4 Город
+            dd.col-8 = @order.city
+
+            dt.col-4 Модель
+            dd.col-8 = @order.locomotive.model
+
+            dt.col-4 Жилье
+            dd.col-8 = @order.housing
+
+            - if @order.executor.present?
+              dt.col-4 Исполнитель
+              dd.col-8 = @order.executor.full_name
+
+      .card 
+        .card-body
+          h5.card-title Контактное лицо
+          dl.row.mb-0
+            - if @order.contact_person.present?
+              dt.col-4 ФИО 
+              dd.col-8 = @order.contact_person.full_name
+
+              dt.col-4 Телефон
+              dd.col-8 = @order.contact_person.phone
+
+      .card
+        .card-body 
+          h5.card-title Бюджет
+          table.table 
+            thead 
+              th Выделено
+              th Осталось
+            tbody 
+              tr
+                td = @order.budget
+                td = @order.budget
+
+      .card 
+        .card-body 
+          h5.card-title Резцы
+          table.table 
+            thead 
+              th 
+              th Выделено
+              th Осталось
+            tbody 
+              tr
+                th Тангенц
+                td = @order.tangen
+                td = @order.tangen
+              tr 
+                th Чашка
+                td = @order.cup
+                td = @order.cup
+
+      .card
+        .card-body
+          h5.card-title Колесные пары
+          table.table 
+            thead 
+              th Выделено
+              th Осталось
+            tbody 
+              tr
+                td = @order.wheel_pairs
+                td = @order.wheel_pairs
+
+
+      br
+      div
+        => link_to "Edit this order", edit_order_path(@order)
+        '|
+        =< link_to "Back to orders", orders_path
+        br
+        br
+        = button_to "Destroy this order", @order, method: :delete,
+          class: "btn btn-danger"
+        br
+        br

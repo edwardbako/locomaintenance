@@ -10,9 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_14_205054) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_15_204505) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contact_people", force: :cascade do |t|
+    t.string "phone"
+    t.string "name"
+    t.string "patronymic"
+    t.string "surname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locomotives", force: :cascade do |t|
+    t.string "model"
+    t.integer "wheel_pairs"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "city"
+    t.bigint "locomotive_id", null: false
+    t.integer "budget"
+    t.integer "diem"
+    t.string "housing"
+    t.integer "rental_housing"
+    t.integer "tangen"
+    t.integer "cup"
+    t.integer "wheel_pairs"
+    t.bigint "contact_person_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.bigint "executor_id"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_person_id"], name: "index_orders_on_contact_person_id"
+    t.index ["executor_id"], name: "index_orders_on_executor_id"
+    t.index ["locomotive_id"], name: "index_orders_on_locomotive_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -26,4 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_14_205054) do
     t.index ["phone"], name: "index_users_on_phone", unique: true
   end
 
+  add_foreign_key "orders", "contact_people"
+  add_foreign_key "orders", "locomotives"
+  add_foreign_key "orders", "users", column: "executor_id"
 end

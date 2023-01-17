@@ -5,6 +5,12 @@ class User < ApplicationRecord
 
   enum role: [:manager, :executor]
 
+  has_many :orders, foreign_key: :executor_id
+
+  def full_name
+    "#{name} #{surname}"
+  end
+
   def email_required?
     false
   end

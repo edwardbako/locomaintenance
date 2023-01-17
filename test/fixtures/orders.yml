@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city: MyString
+  locomotive: one
+  budget: 1
+  diem: 1
+  housing: MyString
+  rental_housing: 1
+  tangen: 1
+  cup: 1
+  wheel_pairs: 1
+  contact_person: one
+  start_date: 2023-01-16 03:45:05
+  end_date: 2023-01-16 03:45:05
+  executor: one
+  status: 1
+
+two:
+  city: MyString
+  locomotive: two
+  budget: 1
+  diem: 1
+  housing: MyString
+  rental_housing: 1
+  tangen: 1
+  cup: 1
+  wheel_pairs: 1
+  contact_person: two
+  start_date: 2023-01-16 03:45:05
+  end_date: 2023-01-16 03:45:05
+  executor: two
+  status: 1

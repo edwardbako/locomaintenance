@@ -6,19 +6,25 @@
       = form_with(model: resource, as: resource_name,
               url: session_path(resource_name),
               builder: CustomFormBuilder) do |f|
-        .field.mb-3
+        .form-floating.mb-3
+          = f.phone_field :phone,
+                          autofocus: true,
+                          autocomplete: "phone",
+                          placeholder: :phone
           = f.label :phone
-          br
-          = f.phone_field :phone, autofocus: true, autocomplete: "phone"
-        .field.mb-3
-          = f.label :password
-          br
+        
+        .mb-3
           .input-group data-controller="show_password"
-            = f.password_field :password, autocomplete: "current-password",
-              "data-show_password-target": "input"
-            a href="#" data-action="click->show_password#toggle"
-              span.input-group-text
+            .form-floating
+              = f.password_field :password,
+                                autocomplete: "current-password",
+                                "data-show_password-target": "input",
+                                placeholder: :password
+              = f.label :password
+            a href="#" data-action="click->show_password#toggle" class="input-group-text"
+              span
                 i.bi.bi-eye data-show_password-target="icon"
+        
         - if devise_mapping.rememberable?
           .mb-3.form-check
             = f.check_box :remember_me
