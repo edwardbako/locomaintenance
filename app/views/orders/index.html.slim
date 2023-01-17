@@ -1,11 +1,15 @@
 .container 
   .row
     .col
-      h1 Orders
+      h1 = t :title, scope: [:navigation, :orders]
 
       table.table#orders
         tbody
           - @orders.each do |order|
             == render order
+      
       - if current_user.manager?
-        = link_to "New order", new_order_path, class: "btn btn-primary"
+        = link_to t(:new, scope: [:helpers, :actions],
+                          model: Order.model_name.human),
+                  new_order_path,
+                  class: "btn btn-primary"

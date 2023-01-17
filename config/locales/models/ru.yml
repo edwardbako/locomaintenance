@@ -1,0 +1,58 @@
+ru:
+  activerecord:
+    models:
+      order:
+        zero: Заказов
+        one: Заказ
+        two: Заказа
+        many: Заказов
+      user:
+        zero: Пользователей
+        one: Пользователь
+        two: Пользователя
+        many: Пользователей
+      contact_person:
+        zero: Контактных лиц
+        one: Контактное лицо
+        two: Контактных лица
+        many: Контактных лиц
+    attributes:
+      user:
+        name: Имя
+        surname: Фамилия
+        phone: Телефон
+        role: Роль
+      user/role:
+        manager: Менеджер
+        executor: Исполнитель
+      order:
+        city: Город
+        locomotive_id: Локомотив
+        wheel_pairs: Колесные пары
+        budget: Бюджет
+        diem: Суточные
+        rental_housing: Стоимость жилья
+        housing: Адрес жилья
+        tangen: Тангенц
+        cup: Чашка
+        start_date: Дата начала
+        executor_id: Исполнитель
+        not_assigned: Не назначен
+        allocated: Выделено
+        rest: Осталось
+        incisors: Резцы
+      order/status:
+        newborn: Новый
+        in_progress: В работе
+        completed: Завершен
+        canceled: Отменен
+      contact_person:
+        name: Имя
+        surname: Фамилия
+        patronymic: Отчество
+        phone: Телефон
+        full_name: Ф.И.О.
+      locomotive:
+        model: Модель
+        wheel_pairs: Колесные пары
+      

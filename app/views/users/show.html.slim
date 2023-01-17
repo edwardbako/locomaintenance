@@ -5,20 +5,25 @@
         .card-body
           h5.card-title = @user.full_name
           dl.row.mb-0 
-            dt.col-4 Телефон
+            dt.col-4 = User.human_attribute_name("phone")
             dd.col-8 = @user.phone
 
-            dt.col-4 Роль
-            dd.col-8 = @user.role
+            dt.col-4 = User.human_attribute_name("role")
+            dd.col-8 = User.human_attribute_name("role.#{@user.role}")
 
       br
       div
-        => link_to "Edit this user", edit_user_path(@user)
+        => link_to t(:edit, scope: [:helpers, :actions],
+                            model: User.model_name.human),
+                    edit_user_path(@user)
         '|
-        =< link_to "Back to users", users_path
+        =< link_to t("navigation.back"), users_path
         br
         br
-        = button_to "Destroy this user", @user, method: :delete,
+        = button_to t(:destroy, scope: [:helpers, :actions],
+                                model: User.model_name.human),
+                    @user,
+                    method: :delete,
           class: "btn btn-danger"
         br
         br

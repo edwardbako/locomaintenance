@@ -34,7 +34,7 @@
     = form.label :housing
 
   .input-group.mb-2
-    span.input-group-text Резцы
+    span.input-group-text = Order.human_attribute_name :incisors
     .form-floating
       = form.number_field :tangen, placeholder: :tangen
       = form.label :tangen
@@ -47,7 +47,7 @@
     .card-body
       = form.fields_for :contact_person do |person_form|
         .input-group.mb-2
-          span.input-group-text контактное лицо
+          span.input-group-text = ContactPerson.model_name.human
           .form-floating
             = person_form.phone_field :phone, placeholder: :phone
             = person_form.label :phone

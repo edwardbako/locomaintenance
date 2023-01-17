@@ -1,15 +1,16 @@
 tr id="#{dom_id order}"
   td 
-    - case order.status.to_sym
-    - when :newborn
-      i.bi.bi-circle
-    - when :in_progress
-      i.bi.bi-person-circle 
-    - when :completed
-      i.bi.bi-check-circle
-    - else
-      i.bi.bi-x-circle
-  td = link_to "Заказ № #{order.id}", order, class: "d-block"
+    span title = Order.human_attribute_name("status.#{order.status}")
+      - case order.status.to_sym
+      - when :newborn
+        i.bi.bi-circle
+      - when :in_progress
+        i.bi.bi-person-circle 
+      - when :completed
+        i.bi.bi-check-circle
+      - else
+        i.bi.bi-x-circle
+  td = link_to "#{Order.model_name.human} №#{order.id}", order, class: "d-block"
   td = order.locomotive.model
   td = order.city
 

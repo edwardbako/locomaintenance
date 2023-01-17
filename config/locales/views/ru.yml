@@ -1,0 +1,14 @@
+ru:
+  navigation:
+    back: Назад
+    orders:
+      title: Заказы
+      new: Добавить заказ
+      edit: Редактировать заказ
+    users: 
+      title: Пользователи
+      new: Добавить пользователя
+      edit: Редактировать пользователя
+    log_in: Войти
+    log_out: Выйти
+    remember_me: Запомнить меня

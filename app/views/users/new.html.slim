@@ -1,11 +1,11 @@
 .container 
   .row
     .col-4 
-      h1 New user
+      h1 = t :new, scope: [:navigation, :users]
 
       == render "form", user: @user
 
       br
 
       div
-        = link_to "Back to users", users_path
+        = link_to t("navigation.back"), users_path

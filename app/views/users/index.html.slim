@@ -1,16 +1,17 @@
 .container 
   .row
     .col
-      h1 Users
+      h1 = t :title, scope: [:navigation, :users]
 
       table.table#users
         thead 
-          th Имя
-          th Фамилия
-          th Телефон
-          th Роль
+          th = User.human_attribute_name("name")
+          th = User.human_attribute_name("surname")
+          th = User.human_attribute_name("phone")
+          th = User.human_attribute_name("role")
         tbody
           - @users.each do |user|
             == render user
 
-      = link_to "New user", new_user_path, class: "btn btn-primary"
+      = link_to t("helpers.actions.new", model: User.model_name.human),
+                new_user_path, class: "btn btn-primary"

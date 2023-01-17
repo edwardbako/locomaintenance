@@ -8,7 +8,7 @@
     = form.label :surname
 
   .form-floating.mb-2
-    = form.select :role, User.roles.keys
+    = form.select :role, User.roles.keys.collect { |role| [User.human_attribute_name("role.#{role}"), role]}
     = form.label :role
 
   .form-floating.mb-2

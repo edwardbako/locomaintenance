@@ -1,11 +1,11 @@
 .container 
   .row
     .col-xs.col-4
-      h1 New order
+      h1 = t :new, scope: [:navigation, :orders]
 
       == render "form", order: @order
 
       br
 
       div
-        = link_to "Back to orders", orders_path
+        = link_to t("navigation.back"), orders_path

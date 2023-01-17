@@ -1,45 +1,45 @@
 .container 
   .row
     .col-4
-      h3 Заказ №#{@order.id}
+      h3 = "#{Order.model_name.human} №#{@order.id}"
 
       .card 
         .card-body
           dl.row.mb-0
-            dt.col-4 Город
+            dt.col-4 = Order.human_attribute_name :city
             dd.col-8 = @order.city
 
-            dt.col-4 Модель
+            dt.col-4 = Locomotive.human_attribute_name :model
             dd.col-8 = @order.locomotive.model
 
-            dt.col-4 Жилье
+            dt.col-4 = Order.human_attribute_name :housing
             dd.col-8 = @order.housing
 
-            dt.col-4 Исполнитель
+            dt.col-4 = Order.human_attribute_name :executor_id
             dd.col-8
               - if @order.executor.present?
                 = @order.executor.full_name
               - else 
-                ' Не занзначен
+                = Order.human_attribute_name :not_assigned
 
       .card 
         .card-body
-          h5.card-title Контактное лицо
+          h5.card-title = ContactPerson.model_name.human
           dl.row.mb-0
             - if @order.contact_person.present?
-              dt.col-4 ФИО 
+              dt.col-4 = ContactPerson.human_attribute_name :full_name
               dd.col-8 = @order.contact_person.full_name
 
-              dt.col-4 Телефон
+              dt.col-4 = ContactPerson.human_attribute_name :phone
               dd.col-8 = @order.contact_person.phone
 
       .card
         .card-body 
-          h5.card-title Бюджет
+          h5.card-title = Order.human_attribute_name :budget
           table.table 
             thead 
-              th Выделено
-              th Осталось
+              th = Order.human_attribute_name :allocated
+              th = Order.human_attribute_name :rest
             tbody 
               tr
                 td = @order.budget
@@ -47,29 +47,29 @@
 
       .card 
         .card-body 
-          h5.card-title Резцы
+          h5.card-title = Order.human_attribute_name :incisors
           table.table 
             thead 
               th 
-              th Выделено
-              th Осталось
+              th = Order.human_attribute_name :allocated
+              th = Order.human_attribute_name :rest
             tbody 
               tr
-                th Тангенц
+                th = Order.human_attribute_name :tangen
                 td = @order.tangen
                 td = @order.tangen
               tr 
-                th Чашка
+                th = Order.human_attribute_name :cup
                 td = @order.cup
                 td = @order.cup
 
       .card
         .card-body
-          h5.card-title Колесные пары
+          h5.card-title = Order.human_attribute_name :wheel_pairs
           table.table 
             thead 
-              th Выделено
-              th Осталось
+              th = Order.human_attribute_name :allocated
+              th = Order.human_attribute_name :rest
             tbody 
               tr
                 td = @order.wheel_pairs
@@ -79,14 +79,22 @@
       br
       div
         - if current_user.manager?
-          => link_to "Edit this order", edit_order_path(@order)
+          => link_to t(:edit, scope: [:helpers, :actions],
+                              model: Order.model_name.human),
+                    edit_order_path(@order)
           '|
-          =< link_to "Back to orders", orders_path
+          =< link_to t("navigation.back"), orders_path
           br
           br
-          = button_to "Destroy this order", @order, method: :delete,
+          = button_to t(:destroy, scope: [:helpers, :actions],
+                                  model: Order.model_name.human),
+                      @order,
+                      method: :delete,
             class: "btn btn-danger"
         - else 
-          = link_to "Заполнить отчет", nil, class: "btn btn-warning disabled"
+          = link_to t(:fill_in, scope: [:helpers, :actions],
+                              model: "Report"),
+                    nil,
+                    class: "btn btn-warning disabled"
         br
         br
