@@ -1,0 +1,16 @@
+.container 
+  .row
+    .col
+      h1 Users
+
+      table.table#users
+        thead 
+          th Имя
+          th Фамилия
+          th Телефон
+          th Роль
+        tbody
+          - @users.each do |user|
+            == render user
+
+      = link_to "New user", new_user_path, class: "btn btn-primary"

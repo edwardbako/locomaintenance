@@ -1,0 +1,31 @@
+= form_with(model: @user, builder: CustomFormBuilder) do |form|
+  .form-floating.mb-2
+    = form.text_field :name, placeholder: :name
+    = form.label :name
+
+  .form-floating.mb-2
+    = form.text_field :surname, placeholder: :surname
+    = form.label :surname
+
+  .form-floating.mb-2
+    = form.select :role, User.roles.keys
+    = form.label :role
+
+  .form-floating.mb-2
+    = form.phone_field :phone, placeholder: :phone
+    = form.label :phone
+
+  - if @user.new_record?
+    .mb-2
+      .input-group data-controller="show_password"
+        .form-floating
+          = form.password_field :password,
+                                placeholder: :password,
+                                "data-show_password-target": "input"
+          = form.label :password
+        a href="#" data-action="show_password#toggle" class="input-group-text"
+          span
+            i.bi.bi-eye data-show_password-target="icon"
+  div
+    = form.submit class: "btn btn-primary"
+

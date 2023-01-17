@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   has_many :orders, foreign_key: :executor_id
 
+  validates :phone, presence: true
+
   def full_name
     "#{name} #{surname}"
   end
