@@ -6,14 +6,8 @@ body {
   // }
 }
 
-.field_with_errors {
-  .form-control {
-    border-color: $danger;
-  }
-
-  .control-label {
-    color: $danger;
-  }
+.is-invalid+.form-label {
+  color: $danger;
 }
 
 .form-inline {
