@@ -7,5 +7,5 @@
         tbody
           - @orders.each do |order|
             == render order
-
-      = link_to "New order", new_order_path, class: "btn btn-primary"
+      - if current_user.manager?
+        = link_to "New order", new_order_path, class: "btn btn-primary"

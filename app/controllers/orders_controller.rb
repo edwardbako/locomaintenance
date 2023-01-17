@@ -1,10 +1,18 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :check_manager, except: %i[ index show ]
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.all
+    @orders = if current_user.manager?
+                Order.all
+              else 
+                Order.includes(:executor, :locomotive)
+                      .where(executor: current_user)
+                      .in_progress
+              end
+
   end
 
   # GET /orders/1 or /orders/1.json

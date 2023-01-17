@@ -5,8 +5,9 @@ nav.navbar.navbar-expand
       ul.navbar-nav.me-auto
         li.nav-item
           = link_to "Orders", orders_url, class: "nav-link"
-        li.nav-item
-          = link_to "Users", users_url, class: "nav-link"
+        - if current_user.manager?
+          li.nav-item
+            = link_to "Users", users_url, class: "nav-link"
 
       ul.navbar-nav
         li.nav-item

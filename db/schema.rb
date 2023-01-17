@@ -33,13 +33,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_15_204505) do
   create_table "orders", force: :cascade do |t|
     t.string "city"
     t.bigint "locomotive_id", null: false
-    t.integer "budget"
-    t.integer "diem"
+    t.integer "budget", default: 0
+    t.integer "diem", default: 0
     t.string "housing"
-    t.integer "rental_housing"
-    t.integer "tangen"
-    t.integer "cup"
-    t.integer "wheel_pairs"
+    t.integer "rental_housing", default: 0
+    t.integer "tangen", default: 0
+    t.integer "cup", default: 0
+    t.integer "wheel_pairs", default: 0
     t.bigint "contact_person_id"
     t.datetime "start_date"
     t.datetime "end_date"

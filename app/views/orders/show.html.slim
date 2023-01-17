@@ -15,9 +15,12 @@
             dt.col-4 Жилье
             dd.col-8 = @order.housing
 
-            - if @order.executor.present?
-              dt.col-4 Исполнитель
-              dd.col-8 = @order.executor.full_name
+            dt.col-4 Исполнитель
+            dd.col-8
+              - if @order.executor.present?
+                = @order.executor.full_name
+              - else 
+                ' Не занзначен
 
       .card 
         .card-body
@@ -75,12 +78,15 @@
 
       br
       div
-        => link_to "Edit this order", edit_order_path(@order)
-        '|
-        =< link_to "Back to orders", orders_path
-        br
-        br
-        = button_to "Destroy this order", @order, method: :delete,
-          class: "btn btn-danger"
+        - if current_user.manager?
+          => link_to "Edit this order", edit_order_path(@order)
+          '|
+          =< link_to "Back to orders", orders_path
+          br
+          br
+          = button_to "Destroy this order", @order, method: :delete,
+            class: "btn btn-danger"
+        - else 
+          = link_to "Заполнить отчет", nil, class: "btn btn-warning disabled"
         br
         br
