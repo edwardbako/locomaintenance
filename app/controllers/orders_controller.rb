@@ -5,13 +5,12 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-    @orders = if current_user.manager?
-                Order.all
-              else 
-                Order.includes(:executor, :locomotive)
-                      .where(executor: current_user)
-                      .in_progress
-              end
+    @orders = Order.includes(:executor, :locomotive)
+    if current_user.manager?
+      @orders = @orders.all
+    else 
+      @orders = @orders.where(executor: current_user).in_progress
+    end
 
   end
 
