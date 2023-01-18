@@ -84,6 +84,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: locomaintenance_production
   username: locomaintenance
   password: <%= ENV["LOCOMAINTENANCE_DATABASE_PASSWORD"] %>
