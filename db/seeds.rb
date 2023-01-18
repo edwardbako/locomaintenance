@@ -114,3 +114,5 @@ if Order.count == 0
     ]
   )
 end
+
+User.executor.last.orders.first.completed!

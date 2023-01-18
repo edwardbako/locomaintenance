@@ -1,6 +1,6 @@
-.container.position-relative
-  .row
-    .col-xs-offset-2.col-xs-8
+.container
+  .row.justify-content-center
+    .col-10.col-sm-8.position-relative
       br  
       - [:notice, :alert, :error, :info].each do |name|
         - if flash[name].present?

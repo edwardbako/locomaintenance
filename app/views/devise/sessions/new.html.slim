@@ -1,6 +1,6 @@
 .container
   .row.justify-content-center
-    .col-3
+    .col-10.col-sm-8.col-md-6.col-lg-4.col-xl-3
       h2
         = t(:log_in, scope: :navigation)
       = form_with(model: resource, as: resource_name,
@@ -27,7 +27,7 @@
         
         - if devise_mapping.rememberable?
           .mb-3.form-check
-            = f.check_box t(:remember_me, scope: :navigation)
+            = f.check_box t(:remember_me, scope: :navigation), checked: true
         .actions.mb-3
           = f.submit t(:log_in, scope: :navigation), class: "btn btn-primary"
 

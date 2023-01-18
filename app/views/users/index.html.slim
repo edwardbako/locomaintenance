@@ -5,8 +5,10 @@
 
       table.table#users
         thead 
-          th = User.human_attribute_name("name")
-          th = User.human_attribute_name("surname")
+          th 
+            = User.human_attribute_name("name")
+            '
+            = User.human_attribute_name("surname")
           th = User.human_attribute_name("phone")
           th = User.human_attribute_name("role")
         tbody

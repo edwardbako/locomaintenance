@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :orders
   resources :users
 
+  get '/orders' => "orders#index", as: :user_root
+
 end

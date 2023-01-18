@@ -21,9 +21,10 @@ body {
 
 #notice {
   position: absolute;
-  width: 100%;
+  left: 0;
+  right: 0;
   z-index: 10000;
-  opacity: 100%;
+  opacity: 90%;
 
   // &.hidden {
   //   visibility: hidden;
@@ -31,4 +32,8 @@ body {
   //   transition: visibility 5s, opacity 10s;
 
   // }
+}
+
+.nav-link.active {
+  font-weight: bolder;
 }

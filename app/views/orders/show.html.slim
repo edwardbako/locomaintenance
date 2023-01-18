@@ -1,22 +1,22 @@
 .container 
-  .row
-    .col-4
+  .row.justify-content-center
+    .col.col-sm-10.col-md-8.col-lg-6.col-xl-4 
       h3 = "#{Order.model_name.human} №#{@order.id}"
 
       .card 
         .card-body
           dl.row.mb-0
-            dt.col-4 = Order.human_attribute_name :city
-            dd.col-8 = @order.city
+            dt.col-5 = Order.human_attribute_name :city
+            dd.col-7 = @order.city
 
-            dt.col-4 = Locomotive.human_attribute_name :model
-            dd.col-8 = @order.locomotive.model
+            dt.col-5 = Locomotive.human_attribute_name :model
+            dd.col-7 = @order.locomotive.model
 
-            dt.col-4 = Order.human_attribute_name :housing
-            dd.col-8 = @order.housing
+            dt.col-5 = Order.human_attribute_name :housing
+            dd.col-7 = @order.housing
 
-            dt.col-4 = Order.human_attribute_name :executor_id
-            dd.col-8
+            dt.col-5 = Order.human_attribute_name :executor_id
+            dd.col-7
               - if @order.executor.present?
                 = @order.executor.full_name
               - else 
@@ -27,11 +27,11 @@
           h5.card-title = ContactPerson.model_name.human
           dl.row.mb-0
             - if @order.contact_person.present?
-              dt.col-4 = ContactPerson.human_attribute_name :full_name
-              dd.col-8 = @order.contact_person.full_name
+              dt.col-5 = ContactPerson.human_attribute_name :full_name
+              dd.col-7 = @order.contact_person.full_name
 
-              dt.col-4 = ContactPerson.human_attribute_name :phone
-              dd.col-8 = @order.contact_person.phone
+              dt.col-5 = ContactPerson.human_attribute_name :phone
+              dd.col-7 = @order.contact_person.phone
 
       .card
         .card-body 
