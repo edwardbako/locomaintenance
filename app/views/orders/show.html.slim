@@ -78,12 +78,12 @@
 
       br
       div
+        =< link_to t("navigation.back"), orders_path
         - if current_user.manager?
+          '|
           => link_to t(:edit, scope: [:helpers, :actions],
                               model: Order.model_name.human),
                     edit_order_path(@order)
-          '|
-          =< link_to t("navigation.back"), orders_path
           br
           br
           = button_to t(:destroy, scope: [:helpers, :actions],
@@ -92,6 +92,8 @@
                       method: :delete,
             class: "btn btn-danger"
         - else 
+          br
+          br
           = link_to t(:fill_in, scope: [:helpers, :actions],
                               model: "Report"),
                     nil,
