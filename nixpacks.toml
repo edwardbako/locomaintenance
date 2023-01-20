@@ -1,0 +1,35 @@
+[variables]
+RUBY_CONFIGURE_OPTS = "--enable-yjit"
+RUBY_YJIT_ENABLE = "1"
+
+[phases.setup]
+nixPkgs = [
+  "...",
+  "binutils",
+  # "gcc",
+  "(rust-bin.stable.latest.default.override { targets = [\"x86_64-unknown-linux-musl\"]; })",
+  "musl",
+  "musl.dev",
+]
+
+nixOverlays = [
+  "...",
+  "https://github.com/oxalica/rust-overlay/archive/master.tar.gz",
+]
+
+nixpkgsArchive = "293a28df6d7ff3dec1e61e37cc4ee6e6c0fb0847"
+
+aptPkgs = [
+  "...",
+  "libssl-dev",
+  "libz-dev",
+  "build-essential",
+  "checkinstall",
+  "zlib1g",
+  "zlib1g-dev",
+  "zlib-gst",
+]
+
+cmds = [
+  "curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash -s stable && printf '\\neval \"$(rbenv init -)\"' >> /root/.profile && . /root/.profile && RUBY_CONFIGURE_OPTS='--enable-yjit' rbenv install 3.2.0 && rbenv global 3.2.0 && rbenv rehash && ruby -v --yjit && sleep 10 && gem install bundler:2.4.1",
+]

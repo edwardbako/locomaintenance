@@ -1,0 +1,41 @@
+volumes:
+  pg_data:
+
+
+services:
+  postgres:
+    image: postgres
+    container_name: loco_postgres
+    volumes:
+      - 'pg_data:/home/postgres/data'
+      - 'pg_data:/dump'
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      PGDATA: /home/postgres/data
+  #       network_mode: 'host'
+
+  redis:
+    container_name: loco_redis
+    build:
+      context: ./redis/
+      dockerfile: Dockerfile
+    ports:
+      - '6379:6379'
+
+  app:
+    image: locomain
+    container_name: app
+    ports:
+      - '5000:3000'
+    environment:
+      RAILS_ENV: production
+      DATABASE_USERNAME: user
+      DATABASE_PASSWORD: password
+      DATABASE_URL: postgres://postgres
+      REDIS_URL: redis://redis
+    depends_on:
+      - postgres
+      - redis
